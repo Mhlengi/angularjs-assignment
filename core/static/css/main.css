@@ -23,3 +23,49 @@
   margin-bottom:-10px;
   color:green;
 }
+
+.jumbotron {
+        height: 400px;
+        text-align: center;
+        background-image: url("/static/images/work.png");
+        border-radius: 0px;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 50px;
+        overflow: hidden;
+
+      }
+
+  .title {
+    font-family: "proxima-nova-n1","proxima-nova";
+    font-weight: 100;
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #1a468d;
+}
+
+.title2{
+  font-family: "proxima-nova-n1","proxima-nova";
+  font-weight: 100;
+  font-size: 1.5em;
+  line-height: 1.25;
+  color: #000000;
+}
+
+#about {
+  position:relative;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100vh;
+    width:100%;
+}
+
+#middlediv {
+  text-align: center;
+
+}
