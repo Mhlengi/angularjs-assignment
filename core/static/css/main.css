@@ -1,7 +1,11 @@
 .completed {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .badge {
-	cursor: pointer;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }

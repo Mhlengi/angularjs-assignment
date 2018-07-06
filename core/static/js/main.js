@@ -1,4 +1,4 @@
-var app = angular.module('drf-angular', [
+var app = angular.module('myAPP', [
     'ui.router'
 ]);
 
@@ -11,6 +11,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/static/templates/home.html',
             controller: 'MainCtrl'
         })
+        .state('about-us', {
+            url: '/about-us',
+            templateUrl: '/static/templates/about.html',
+            controller: 'MainCtrl'
+        })
+        .state('contact', {
+            url: '/contact',
+            templateUrl: '/static/templates/contact.html',
+            controller: 'MainCtrl'
+        })
         .state('add-todo', {
             url: "/add",
             templateUrl: 'static/templates/add_todo.html',
@@ -20,8 +30,19 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 });
 
-app.controller('MainCtrl', function ($scope, Todos, $state) {
+app.controller('MainCtrl', function ($scope, Todos, $state, $http) {
     $scope.newTodo = {};
+    // $scope.message = 'Mhlengi';
+
+    $http.get('static/json/data.json')
+        .success(function (response) {
+            $scope.message = response.AboutUs;
+        })
+        .error(function (data) {
+            console.log('Could not find data.json');
+        });
+
+
     $scope.addTodo = function () {
         Todos.addOne($scope.newTodo)
             .then(function (res) {
