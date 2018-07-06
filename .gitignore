@@ -60,3 +60,9 @@ target/
 venv/
 .idea/
 .editorconfig
+
+bin/
+lib64
+pip-selfcheck.json
+pyvenv.cfg
+share/
