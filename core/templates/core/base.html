@@ -41,7 +41,8 @@
                 <a class="nav-link" href="#" id="login">Login</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 hidden" id="loginform">
+        <form class="form-inline my-0 py-0 my-lg-0 hidden" id="loginform">
+          <a class="nav-link" href="#" id="closelogin">sign up</a>
             <input class="form-control mr-sm-2" type="email" placeholder="Email"
                    aria-label="Email">
             <input class="form-control mr-sm-2" type="password"
@@ -52,6 +53,7 @@
         </form>
 
         <form class="form-inline my-2 my-lg-0 hidden" id="signinform">
+          <a class="nav-link" href="#" id="closesignin" >login</a>
             <input class="form-control mr-sm-2" type="email" placeholder="Email"
                    aria-label="Email">
             <input class="form-control mr-sm-2" type="password"
@@ -89,6 +91,17 @@
         $('#rightnav').toggleClass('hidden');
         $('#signinform').toggleClass('hidden');
     });
+
+    $('#closelogin').click(function () {
+        $('#loginform').toggleClass('hidden');
+        $('#signinform').toggleClass('hidden');
+    });
+
+    $('#closesignin').click(function () {
+        $('#loginform').toggleClass('hidden');
+        $('#signinform').toggleClass('hidden');
+    });
+
 </script>
 <footer class="bg-dark d-flex justify-content-center mt-3 py-3 fixed-bottom">
     <p style="color:white">Copyright &copy; Mhlengi Mzimela AangularJS Assignment 2018</p>

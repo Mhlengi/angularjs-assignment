@@ -9,3 +9,17 @@
 .hidden {
     display: none;
 }
+
+#closelogin{
+  size:10px;
+  padding-bottom:0px;
+  margin-bottom:-10px;
+  color:green;
+}
+
+#closesignin{
+  size:10px;
+  padding-bottom:0px;
+  margin-bottom:-10px;
+  color:green;
+}
