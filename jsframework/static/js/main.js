@@ -15,11 +15,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/add",
             templateUrl: 'static/templates/add_todo.html',
             controller: 'MainCtrl'
-        })
-        .state('delete-todo', {
-            url: "/delete",
-            templateUrl: 'static/templates/delete.html',
-            controller: 'MainCtrl'
         });
 
     $urlRouterProvider.otherwise('/');

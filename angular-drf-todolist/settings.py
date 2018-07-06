@@ -14,7 +14,6 @@ from os.path import abspath, dirname, join
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 PROJECT_CONFIG_DIR = dirname(dirname(abspath(__file__)))
@@ -75,6 +74,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'HOST': os.getenv('POSTGRES_PORT_5432_TCP_ADDR'),
+#         'NAME': 'angular_js_assigment',
+#         'USERNAME': 'postgres',
+#         'PASSWORD': 'password'
+#     }
+# }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

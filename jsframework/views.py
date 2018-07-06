@@ -1,15 +1,45 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+import json
 
-from jsframework.models import Todo
-from jsframework.serializers import TodoSerializer
+import logging
 
-# Todos routes
+from jsframework.models import (
+    Carousel,
+    OutSourceTask,
+    Todo
+)
+from jsframework.serializers import (
+    CarouselSerializer,
+    OutSourceTaskSerializer,
+    TodoSerializer
+)
+
+
 class TodoViewSet(viewsets.ModelViewSet):
-	queryset = Todo.objects.all()
-	serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
 
 
-# Home route
+class OutSourceTaskViewSet(viewsets.ModelViewSet):
+    queryset = OutSourceTask.objects.all()
+    serializer_class = OutSourceTaskSerializer
+
+
+class CarouselViewSet(viewsets.ModelViewSet):
+    queryset = Carousel.objects.all()
+    serializer_class = CarouselSerializer
+
+
 def index(request):
+    update_json(request)
     return render(request, 'jsframework/base.html')
+
+
+def update_json(request):
+    with open('jsframework/static/json/data.json') as data_file:
+        data = json.load(data_file)
+        try:
+            OutSourceTask.objects.get_or_create(description=data)
+        except Exception as e:
+            logging.error(e)
