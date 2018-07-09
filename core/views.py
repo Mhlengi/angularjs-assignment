@@ -20,7 +20,6 @@ def index(request):
     if request.user.is_authenticated():
         logout(request.user)
     update_json(request)
-    # return render(request, 'core/base.html')
     return render(request, 'core/index.html')
 
 
