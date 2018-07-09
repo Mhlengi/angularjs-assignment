@@ -1,8 +1,5 @@
 var app = angular.module('app', ['ui.router', 'ngSanitize']);
-
-// Pull this from Django host and path
 app.constant('BASE_URL', 'http://localhost:8000/api/carousels/');
-
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
@@ -20,17 +17,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('carousel', {
             url: '/carousel',
             controller: 'MainCtrl'
-        })
-        .state('add-todo', {
-            url: "/add",
-            templateUrl: 'static/templates/add_todo.html',
-            controller: 'MainCtrl'
         });
-
     $urlRouterProvider.otherwise('/');
 });
-
-
 app.controller('MainCtrl', function ($scope, Todos, $state, $http, BASE_URL) {
     $scope.about_us_text = "ABOUT US";
     $http.get('static/json/data.json')
@@ -41,25 +30,9 @@ app.controller('MainCtrl', function ($scope, Todos, $state, $http, BASE_URL) {
             console.log("Could not find data.json");
         });
     $scope.newTodo = {};
-    // $scope.links = []
-    // $scope.links = [
-    //     {
-    //         caption: "Create Mhlengi Mzimela"
-    //     },
-    //     {
-    //         caption: "Add Mhlengi Mzimela"
-    //     },
-    //     {
-    //         caption: "Delete Mhlengi Mzimela"
-    //     },
-    // ];
-
-
     $http.get(BASE_URL + '?format=json').success(function (data) {
         $scope.links = data;
     });
-
-
     $scope.isEditVisible = false;
     $scope.addTodo = function () {
         Todos.addOne($scope.newTodo)
@@ -71,30 +44,18 @@ app.controller('MainCtrl', function ($scope, Todos, $state, $http, BASE_URL) {
             $scope.todos = data;
         });
     };
-
-
     $scope.toggleCompleted = function (todo) {
         Todos.update(todo);
     };
-
     $scope.deleteTodo = function (id) {
         Todos.delete(id);
-        // update the list in ui
         $scope.todos = $scope.todos.filter(function (todo) {
             return todo.id !== id;
         });
     };
-
-
-    // var index = $scope.array.indexOf(item);
-    // $scope.array.splice(index, 1);
-
-
     Todos.all().then(function (res) {
         $scope.todos = res.data;
     });
-
-
 });
 app.service('Todos', function ($http, BASE_URL) {
     var Todos = {};
@@ -115,8 +76,6 @@ app.service('Todos', function ($http, BASE_URL) {
     };
     return Todos;
 });
-
-
 app.directive('carousel', function ($timeout) {
     return {
         restrict: 'E',
@@ -132,4 +91,3 @@ app.directive('carousel', function ($timeout) {
         }
     }
 });
-
