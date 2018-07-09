@@ -8,7 +8,10 @@
                     class="list-group-item">
                     <input type="checkbox" ng-checked="todo.is_completed"
                            ng-change="toggleCompleted(todo)"
-                           ng-model='todo.is_completed'> {{ todo.title }}
+                           ng-model='todo.is_completed'>
+                    <p style="color: black">
+                        {{ todo.title }}
+                    </p>
 
                     <span class='badge' ng-click="deleteTodo(todo.id)">X</span>
                 </li>
@@ -31,3 +34,6 @@
 
 
 </div>
+
+
+

@@ -2,50 +2,65 @@
 
 
 <!DOCTYPE html>
-<html ng-app="app">
+<html lang="en" ng-app="app">
 <head>
     <title> Assignment </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-          crossorigin="anonymous"/>
-    <link rel='stylesheet' href="{{ STATIC_URL }}css/main.css"/>
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat"
+          rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"
+          type="text/css">
+    <link rel='stylesheet' href="{{ STATIC_URL }}css/style.css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script src="https://code.angularjs.org/1.4.8/angular.js"
+    <script src="https://code.angularjs.org/1.4.8/angular.min.js"
             data-require="angular.js@1.4.8" data-semver="1.4.8"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.4.8/angular-sanitize.min.js"></script>
 
 </head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60"
+      ng-controller="MainCtrl">
 
-<body ng-controller="ctrl">
-
-{% block navbar %}
-    {% include "core/navbar.html" %}
+{% block header_section %}
+    {% include "core/header_section.html" %}
 {% endblock %}
 
-<div style="width:800px; height: 400px">
-    <carousel links="links"></carousel>
-</div>
-
-{% block header %}
-    {% include "core/header.html" %}
+{% block home_section %}
+    {% include "core/home_section.html" %}
 {% endblock %}
 
+{% block about_section %}
+    {% include "core/about_section.html" %}
+{% endblock %}
+
+{% block new_carousel_section %}
+    {% include "core/new_carousel_section.html" %}
+{% endblock %}
+
+{% block contact_section %}
+    {% include "core/contact_section.html" %}
+{% endblock %}
+
+{% block footer_section %}
+    {% include "core/footer_section.html" %}
+{% endblock %}
 
 <script src="{{ STATIC_URL }}js/app.js"></script>
+<script src="{{ STATIC_URL }}js/slider.js"></script>
 
-
-{% block footer %}
-    {% include "core/footer.html" %}
-{% endblock %}
-
+<script type="text/javascript">
+    function success() {
+        if (document.getElementById("text_new_todo_title").value === "") {
+            document.getElementById('button_trigger_modal').disabled = true;
+        } else {
+            document.getElementById('button_trigger_modal').disabled = false;
+        }
+    }
+</script>
 </body>
 </html>
-
-
-
